@@ -2,19 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Grayscale colors */
-:root {
-  --dark-gray: #151619; 
-  --mid-gray-1: #35393F; 
-  --mid-gray-2: #5A6069;
-  --light-gray-1: #7C8187; 
-  --light-gray-2: #C1C4CB; 
-  --white: #ffffff; 
-}
-
-/* Accent colors */
-:root {
-  --orange: #E46643; 
-  --red: #F39765; 
-}
-
