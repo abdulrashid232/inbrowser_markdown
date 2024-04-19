@@ -16,6 +16,8 @@ module.exports = {
       'red': '#F39765',
     },},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 

@@ -1,4 +1,4 @@
-<header class="w-full flex text-justify bg-dark-gray">
+<!-- <header class="w-full flex text-justify bg-dark-gray">
   <div class="menu-icons py-8">
     <div class="hamburg-menu text-black"> <img src="../assets/icon-menu.svg" alt="" srcset=""></div>
     <div class="close"> <img src="../assets/logo.svg" alt="" srcset=""></div>
@@ -11,4 +11,7 @@
   <div class="container">
     <h1 class="text-center">Abdel</h1>
   </div>
-</div>
+</div> -->
+
+<textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
+<markdown class="prose variable-binding" [data]="markdown"></markdown>
