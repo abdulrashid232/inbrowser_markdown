@@ -1,8 +1,36 @@
-<div class="w-full">
-  <header class="flex w-full h-16 bg-dark-gray p-0">
+<div class="w-full truncate">
+  <aside id="Sidebar" class="sidebar p-0 mt-">
+    <div class="flex flex-col h-full">
+      <div class="flex flex-col h-16 justify-center m-0 pt-2 px-4 ">
+        <h1 class="text-xl font-bold text-mid-gray-1">MY DOCUMENTS</h1>
+      </div>
+      <div class="flex flex-col flex-grow overflow-y-auto px-4 py-4 mt-4">
+        <button class="px-4 py-2 bg-orange text-white rounded-md">+ New Document</button>
+        <div class="flex items-center mt-4">
+          <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
+          <div class="documentName flex flex-col ml-4">
+            <p class="text-mid-gray-2">01 April 2022</p>
+            <h4 class="text-white">welcome.md</h4>
+          </div>
+        </div>
+        <div class="flex items-center mt-4">
+          <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
+          <div class="documentName flex flex-col ml-4">
+            <p class="text-mid-gray-2">01 April 2022</p>
+            <h4 class="text-white">welcome.md</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
     <div class="flex items-center w-1/5 h-full justify-between p-0 pr-2 m-0">
-      <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white">
+      <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white cursor-pointer" id="menuButton" (click)="openNav()">
         <img src="../../assets/icon-menu.svg" alt="">
+      </div>
+      <div class="hidden menu h-full px-4 items-center bg-mid-gray-1 text-white cursor-pointer" id="closeButton" (click)="closeNav()">
+        <img src="../../assets/icon-close.svg" alt="">
       </div>
       <div class="logo">
         <img class="text-6xl" src="../../assets/logo.svg" alt="">
@@ -17,8 +45,8 @@
           <h4 class="text-white">welcome.md</h4>
         </div>
       </div>
-      <div class="saveDocument flex items-center">
-        <img src="../../assets/icon-delete.svg" alt="delete-icon">
+      <div class="save&deleteDocument flex items-center" id="save&deleteDocument">
+        <img class="cursor-pointer" src="../../assets/icon-delete.svg" alt="delete-icon">
         <button class="flex items-center p-2 ml-4 bg-orange text-white rounded"> <img class="mr-2"
             src="../../assets/icon-save.svg" alt="save-icon">Save Change</button>
       </div>
