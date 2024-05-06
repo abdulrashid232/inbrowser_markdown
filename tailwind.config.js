@@ -2,7 +2,8 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: { colors: {
+    extend: { 
+      colors: {
       // Grayscale colors
       'dark-gray': '#151619',
       'mid-gray-1': '#35393F',
@@ -14,7 +15,12 @@ module.exports = {
       // Accent colors
       'orange': '#E46643',
       'red': '#F39765',
-    },},
+    },
+    fontFamily: {
+      sans: ['Helvetica', 'Arial', 'sans-serif'],
+      Roboto: ['Roboto', 'sans-serif'], 
+    },
+  },
   },
   plugins: [
     require('@tailwindcss/typography'),

@@ -1,5 +1,5 @@
-<div class="w-full truncate">
-  <aside id="Sidebar" class="sidebar p-0 mt-">
+<div class="w-full truncate font-Roboto">
+  <aside id="Sidebar" class="sidebar p-0  m-0">
     <div class="flex flex-col h-full">
       <div class="flex flex-col h-16 justify-center m-0 pt-2 px-4 ">
         <h1 class="text-xl font-bold text-mid-gray-1">MY DOCUMENTS</h1>
@@ -25,7 +25,7 @@
   </aside>
 
   <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
-    <div class="flex items-center w-1/5 h-full justify-between p-0 pr-2 m-0">
+    <div class="flex items-center w-1/4 h-full justify-between p-0 pr-2 m-0">
       <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white cursor-pointer" id="menuButton" (click)="openNav()">
         <img src="../../assets/icon-menu.svg" alt="">
       </div>
@@ -53,4 +53,7 @@
     </div>
 
   </header>
+  <div class="w-full truncate" id="contentContainer">
+    <app-body-content></app-body-content>
+  </div>
 </div>
