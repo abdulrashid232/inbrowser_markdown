@@ -57,4 +57,9 @@ export class HeaderComponent {
     save_Delete_Div.classList.remove('hidden');
     contentContainer.style.transform = "translateX(0)";
   }
+
+  viewDocument(document: any) {
+    this.dataService.setSelectedDocument(document);
+    console.log(document);
+  }
 }

@@ -2,6 +2,7 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../service/data.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -9,11 +10,13 @@ import { DataService } from '../service/data.service';
     standalone: true,
     templateUrl: './body-content.component.html',
     styleUrl: './body-content.component.css',
-    imports: [MarkdownModule, FormsModule]
+    imports: [MarkdownModule, FormsModule,CommonModule]
 })
 export class BodyContentComponent {
     markdown = '';
     documents:[]= []
+
+    selectedDocument: any;
     previewShow:boolean = false;
     
 
@@ -56,6 +59,10 @@ export class BodyContentComponent {
           // this.documents.forEach((doc:any)=>{
           //   console.log(doc.content);
           // });
+
+          this.dataService.selectedDocument$.subscribe((document)=>{
+            this.selectedDocument = document;
+          });
         })
         this.adjustTextareaHeight();
         this.adjustVerticalLineHeight();
