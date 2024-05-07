@@ -48,9 +48,9 @@
     <div class="container flex items-center justify-between mx-4 ">
       <div class="documentName flex items-center pl-4 border-l-2 border-gray-400 h-8">
         <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
-        <div class="documentName flex flex-col ml-4">
+        <div class="documentName flex flex-col ml-4" *ngIf="selectedDocument">
           <p class="text-mid-gray-2">Document Name</p>
-          <h4 class="text-white">welcome.md</h4>
+          <input type="text"  class="text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent" [placeholder]="selectedDocument.name">
         </div>
       </div>
       <div class="save&deleteDocument flex items-center" id="save&deleteDocument">

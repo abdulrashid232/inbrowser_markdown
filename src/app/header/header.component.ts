@@ -15,11 +15,16 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   documents:[]= []
 
+  selectedDocument: any;
+
   constructor(private dataService: DataService) {}
  
   ngOnInit() {
     this.dataService.fetchData().subscribe((note)=>{
       this.documents = note;
+    });
+    this.dataService.selectedDocument$.subscribe((document)=>{
+      this.selectedDocument = document;
     });
   }
 

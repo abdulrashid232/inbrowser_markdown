@@ -60,10 +60,11 @@ export class BodyContentComponent {
           //   console.log(doc.content);
           // });
 
-          this.dataService.selectedDocument$.subscribe((document)=>{
-            this.selectedDocument = document;
-          });
-        })
+          
+        });
+        this.dataService.selectedDocument$.subscribe((document)=>{
+          this.selectedDocument = document;
+        });
         this.adjustTextareaHeight();
         this.adjustVerticalLineHeight();
       }
