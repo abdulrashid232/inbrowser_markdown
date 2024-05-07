@@ -1,5 +1,5 @@
 <div class="flex justify-center w-screen font-Roboto">
-  <div  id="textInput" class="text w-full h-screen">
+  <div id="textInput" class="text w-full h-screen">
     <div class="title bg-light-gray-2 py-1 text-mid-gray-1 text-bold">
       <h1 class="pl-4">MARKDOWN</h1>
     </div>
@@ -9,21 +9,20 @@
   </div>
   <div id="vertical-line" class="vertical-line-container">
     <svg class="vertical-line h-full" height="100vh" width="1">
-      <line x1="0" y1="0" x2="0" y2="100%"  style="stroke:#979797;stroke-width:1" />
+      <line x1="0" y1="0" x2="0" y2="100%" style="stroke:#979797;stroke-width:1" />
     </svg>
   </div>
   <div class=" w-full max-w-full">
     <div class="flex items-center justify-between title bg-light-gray-2 py-1 text-mid-gray-1 px-4 text-bold">
       <h1 class="pl-4">PREVIEW</h1>
       <!-- <div class=""> -->
-        <span (click)="showPreview()" class="cursor-pointer">
-          <img src="../../assets/{{ previewShow ?  'icon-hide-preview.svg':'icon-show-preview.svg'  }}" alt="eye-icon">
+      <span (click)="showPreview()" class="cursor-pointer">
+        <img src="../../assets/{{ previewShow ?  'icon-hide-preview.svg':'icon-show-preview.svg'  }}" alt="eye-icon">
       </span>
       <!-- </div> -->
     </div>
     <div class="p-4">
       <markdown class="prose w-full  whitespace-normal" [data]="markdown"></markdown>
     </div>
-
   </div>
-  <div>
+<div>

@@ -2,17 +2,27 @@
 
 import { Component } from '@angular/core';
 import { BodyContentComponent } from "../body-content/body-content.component";
+import { DataService } from '../service/data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-header',
     standalone: true,
     templateUrl: './header.component.html',
     styleUrl: './header.component.css',
-    imports: [BodyContentComponent]
+    imports: [BodyContentComponent,CommonModule]
 })
 export class HeaderComponent {
+  documents:[]= []
 
-  ngOnInit() {}
+  constructor(private dataService: DataService) {}
+ 
+  ngOnInit() {
+    this.dataService.fetchData().subscribe((note)=>{
+      this.documents = note;
+    });
+  }
+
   openNav() {
     const sidebar = document.getElementById("Sidebar");
     const header = document.querySelector("header");

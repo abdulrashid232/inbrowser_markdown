@@ -1,7 +1,9 @@
 import {
-  DomSanitizer,
+  DomSanitizer
+} from "./chunk-TAAHKUHM.js";
+import {
   HttpClient
-} from "./chunk-X3WWOPMP.js";
+} from "./chunk-RIKSEWK6.js";
 import {
   AsyncPipe,
   CommonModule,

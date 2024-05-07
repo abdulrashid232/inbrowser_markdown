@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../service/data.service';
 
 
 @Component({
@@ -12,10 +13,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class BodyContentComponent {
     markdown = '';
+    documents:[]= []
     previewShow:boolean = false;
     
 
-    constructor( private elementRef: ElementRef) {}
+    constructor( private elementRef: ElementRef, private dataService: DataService) {}
 
     showPreview(){
           const textInput = document.getElementById('textInput');
@@ -47,6 +49,14 @@ export class BodyContentComponent {
       }
       
       ngOnInit() {
+        this.dataService.fetchData().subscribe((note)=>{
+          this.documents = note;
+          console.log(this.documents);
+
+          // this.documents.forEach((doc:any)=>{
+          //   console.log(doc.content);
+          // });
+        })
         this.adjustTextareaHeight();
         this.adjustVerticalLineHeight();
       }
