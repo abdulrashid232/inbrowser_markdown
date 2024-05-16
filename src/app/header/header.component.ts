@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { BodyContentComponent } from "../body-content/body-content.component";
 import { DataService } from '../service/data.service';
 import { CommonModule } from '@angular/common';
+import { Document } from '../service/document';
 
 @Component({
     selector: 'app-header',
@@ -13,19 +14,32 @@ import { CommonModule } from '@angular/common';
     imports: [BodyContentComponent,CommonModule]
 })
 export class HeaderComponent {
-  documents:[]= []
+  documents:any[]= []
 
   selectedDocument: any;
+  formatedDate: string;
 
   constructor(private dataService: DataService) {}
  
   ngOnInit() {
     this.dataService.fetchData().subscribe((note)=>{
       this.documents = note;
+      
     });
     this.dataService.selectedDocument$.subscribe((document)=>{
       this.selectedDocument = document;
     });
+    
+  }
+
+  createNewDocument() {
+    const newDocument: Document = {
+      createdAt: `${new Date().toLocaleDateString()}`, 
+      name: "New Document",
+      content: ""
+    };
+    this.documents.push(newDocument);
+    this.dataService.setSelectedDocument(newDocument);
   }
 
   openNav() {

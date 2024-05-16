@@ -5,7 +5,7 @@
         <h1 class="text-xl font-bold text-mid-gray-1">MY DOCUMENTS</h1>
       </div>
       <div class="flex flex-col flex-grow overflow-y-auto px-4 py-4 mt-4">
-        <button class="px-4 py-2 bg-orange text-white rounded-md">+ New Document</button>
+        <button class="px-4 py-2 bg-orange text-white rounded-md" (click)="createNewDocument()">+ New Document</button>
         <div class="flex items-center mt-4"  *ngFor ="let doc of documents" (click) = "viewDocument(doc)" >
           <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
           <div class="documentName flex flex-col ml-4">

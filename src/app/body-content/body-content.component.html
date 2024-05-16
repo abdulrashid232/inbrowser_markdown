@@ -4,7 +4,7 @@
       <h1 class="pl-4">MARKDOWN</h1>
     </div>
     <div *ngIf="selectedDocument" class="h-screen">
-      <textarea class="w-full h-full p-4 border-none resize-none focus:outline-none"  [(ngModel)]='selectedDocument.content' (input)="adjustTextareaHeight()"></textarea>
+      <textarea class="w-full h-full p-4 border-none resize-none focus:outline-none"  [(ngModel)]='selectedDocument.content' (input)="adjustTextareaHeight()" ></textarea>
     </div>
     
   </div>

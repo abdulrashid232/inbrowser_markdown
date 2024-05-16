@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../service/data.service';
@@ -38,18 +38,27 @@ export class BodyContentComponent {
     }
 
      
-      adjustTextareaHeight() {
-        const textarea = this.elementRef.nativeElement.querySelector('textarea');
-        textarea.style.height = 'auto'; 
+    adjustTextareaHeight() {
+      const textarea = this.elementRef.nativeElement.querySelector('textarea');
+      if (textarea) {
+        textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
-
-        // this.adjustVerticalLineHeight();
+        this.adjustVerticalLineHeight();
       }
-      adjustVerticalLineHeight() {
-        const textareaHeight = document.querySelector('.textarea-container');
-        const verticalLine = document.querySelector('.vertical-line');
+      
+    }
+  
+    adjustVerticalLineHeight() {
+      const textarea = this.elementRef.nativeElement.querySelector('textarea');
+      const verticalLine = this.elementRef.nativeElement.querySelector('.vertical-line');
+  
+      if (textarea && verticalLine) {
+        const textareaHeight = textarea.scrollHeight;
+        textarea.style.overflow = 'hidden';
         verticalLine.setAttribute('height', `${textareaHeight}px`);
       }
+    }
+    
       
       ngOnInit() {
         this.dataService.fetchData().subscribe((note)=>{
@@ -68,6 +77,8 @@ export class BodyContentComponent {
         this.adjustTextareaHeight();
         this.adjustVerticalLineHeight();
       }
+
+    
       
 
 
