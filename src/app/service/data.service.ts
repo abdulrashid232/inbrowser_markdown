@@ -20,5 +20,8 @@ export class DataService {
 
   setSelectedDocument(document: any) {
     this.selectedDocument.next(document);
-    }
+  }
+  // updateDocument(document: any) {
+  //   console.log("Document updated:", document);
+  // }
 }

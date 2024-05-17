@@ -50,13 +50,15 @@
         <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
         <div class="documentName flex flex-col ml-4" *ngIf="selectedDocument">
           <p class="text-mid-gray-2">Document Name</p>
-          <input type="text"  class="text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent" [placeholder]="selectedDocument.name">
+          <input type="text" [(ngModel)]="selectedDocument.name" class="nameInput text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent" [placeholder]="selectedDocument.name">
         </div>
       </div>
       <div class="save&deleteDocument flex items-center" id="save&deleteDocument">
         <img class="cursor-pointer" src="../../assets/icon-delete.svg" alt="delete-icon">
-        <button class="flex items-center p-2 ml-4 bg-orange text-white rounded"> <img class="mr-2"
-            src="../../assets/icon-save.svg" alt="save-icon">Save Change</button>
+        <button 
+        (click)="saveChanges()"
+        class="flex items-center p-2 ml-4 bg-orange text-white rounded"> <img class="mr-2"
+            src="../../assets/icon-save.svg" alt="save-icon" >Save Change</button>
       </div>
     </div>
 
