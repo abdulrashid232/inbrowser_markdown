@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class BodyContentComponent {
   markdown = '';
-  documents: [] = []
+  documents: any[] = []
 
   selectedDocument: any;
   previewShow: boolean = false;
@@ -59,21 +59,29 @@ export class BodyContentComponent {
 
 
   ngOnInit() {
-    this.dataService.fetchData().subscribe((note) => {
-      this.documents = note;
-      console.log(this.documents);
+    // this.dataService.fetchData().subscribe((note) => {
+    //   this.documents = note;
+    //   console.log(this.documents);
 
       // this.documents.forEach((doc:any)=>{
       //   console.log(doc.content);
       // });
 
 
-    });
+    // });
+
+    this.fetchDocuments()
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
     });
     this.adjustTextareaHeight();
     this.adjustVerticalLineHeight();
+  }
+
+  fetchDocuments() {
+    this.dataService.fetchData().subscribe((documents) => {
+      this.documents = documents;
+    });
   }
 
 

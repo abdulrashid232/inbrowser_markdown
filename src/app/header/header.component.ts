@@ -92,10 +92,10 @@ export class HeaderComponent {
         if( nameInput.value){
           this.documents[index].name = this.selectedDocument.name = nameInput.value;
         }
+        this.dataService.saveData(this.documents);
         console.log(this.documents[index]);
         
         
-        // this.dataService.updateDocument(this.documents[index]);
       }
       nameInput.value = '';
     }

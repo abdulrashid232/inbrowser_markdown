@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,23 @@ export class DataService {
 
   private apiUrl = '../assets/data.json';
 
-  fetchData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  private localStorageKey = 'documents';
+
+  // fetchData(): Observable<any> {
+  //   return this.http.get<any>(this.apiUrl);
+  // }
+  
+  fetchData(): Observable<any[]> {
+    const data = localStorage.getItem(this.localStorageKey);
+    if (data) {
+      return of(JSON.parse(data));
+    } else {
+      return this.http.get<any>(this.apiUrl);
+    }
+  }
+
+  saveData(documents: any[]) {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(documents));
   }
 
   private selectedDocument = new BehaviorSubject<any>(null);
@@ -21,7 +36,8 @@ export class DataService {
   setSelectedDocument(document: any) {
     this.selectedDocument.next(document);
   }
-  // updateDocument(document: any) {
-  //   console.log("Document updated:", document);
-  // }
+  
+
+
+  
 }
