@@ -129,5 +129,20 @@ export class HeaderComponent {
   }
 
 
+  closePopup() {
+    const popup = document.getElementById('deletePopUp');
+    if (popup) {
+        popup.classList.remove('flex');
+        popup.classList.add('hidden');
+    }
+}
+
+@HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const popup = document.getElementById('deletePopUp');
+    if (event.target === popup) {
+      this.closePopup();
+    }
+  }
 
 }
