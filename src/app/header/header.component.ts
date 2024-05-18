@@ -25,12 +25,26 @@ export class HeaderComponent {
   ngOnInit() {
     this.dataService.fetchData().subscribe((note) => {
       this.documents = note;
+      if (this.documents.length > 0) {
+        this.selectLatestDocument();
+      }
 
     });
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
     });
   }
+
+  selectLatestDocument() {
+    const latestDocument = this.documents[this.documents.length - 1];
+    this.dataService.setSelectedDocument(latestDocument);
+  }
+
+  selectNextDocument() {
+    const nextDocument = this.documents.length > 0 ? this.documents[this.documents.length - 1] : null;
+    this.dataService.setSelectedDocument(nextDocument);
+  }
+
   createNewDocument() {
     const newDocument: Document = {
       createdAt: `${new Date().toLocaleDateString()}`,
@@ -107,8 +121,14 @@ export class HeaderComponent {
     if (this.selectedDocument) {
       this.documents = this.documents.filter(doc => doc !== this.selectedDocument);
       this.dataService.saveData(this.documents);
-      this.selectedDocument = null;
-      this.dataService.setSelectedDocument(null);
+      if (this.documents.length > 0) {
+        this.selectNextDocument();
+      } else {
+        this.selectedDocument = null;
+        this.dataService.setSelectedDocument(null);
+      }
+
+      this.closePopup()
     }
   }
 
