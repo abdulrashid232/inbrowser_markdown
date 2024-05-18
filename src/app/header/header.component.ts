@@ -1,6 +1,6 @@
 // Inside header.component.ts
 
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { BodyContentComponent } from "../body-content/body-content.component";
 import { DataService } from '../service/data.service';
 import { CommonModule } from '@angular/common';
@@ -101,4 +101,33 @@ export class HeaderComponent {
     }
 
   }
+
+
+  deleteDocument() {
+    if (this.selectedDocument) {
+      this.documents = this.documents.filter(doc => doc !== this.selectedDocument);
+      this.dataService.saveData(this.documents);
+      this.selectedDocument = null;
+      this.dataService.setSelectedDocument(null);
+    }
+  }
+
+
+
+
+  confirmDelete(){
+    console.log("Delete");
+    
+    const popup = document.getElementById('deletePopUp');
+    console.log(popup);
+    
+    if (popup) {
+      popup.classList.remove('hidden');
+      popup.classList.add('flex');
+  }
+
+  }
+
+
+
 }

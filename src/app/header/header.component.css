@@ -82,3 +82,13 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+/* pop */
+
+.show{
+  display: flex;
+}
+.hidden{
+  display: none;
+}

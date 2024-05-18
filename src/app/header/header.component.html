@@ -6,7 +6,7 @@
       </div>
       <div class="flex flex-col flex-grow overflow-y-auto px-4 py-4 mt-4">
         <button class="px-4 py-2 bg-orange text-white rounded-md" (click)="createNewDocument()">+ New Document</button>
-        <div class="flex items-center mt-4"  *ngFor ="let doc of documents" (click) = "viewDocument(doc)" >
+        <div class="flex items-center mt-4" *ngFor="let doc of documents" (click)="viewDocument(doc)">
           <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
           <div class="documentName flex flex-col ml-4">
             <p class="text-mid-gray-2">{{doc.createdAt}}</p>
@@ -24,20 +24,22 @@
       <div class="theme-container">
         <img src="../../assets/icon-dark-mode.svg" alt="moon-image">
         <label class="switch">
-          <input type="checkbox" >
+          <input type="checkbox">
           <span class="slider round"></span>
         </label>
         <img src="../../assets/icon-light-mode.svg" alt="sun-image">
-    </div>
+      </div>
     </div>
   </aside>
 
   <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
     <div class="flex items-center w-1/4 h-full justify-between p-0 pr-2 m-0">
-      <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white cursor-pointer" id="menuButton" (click)="openNav()">
+      <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white cursor-pointer" id="menuButton"
+        (click)="openNav()">
         <img src="../../assets/icon-menu.svg" alt="">
       </div>
-      <div class="hidden menu h-full px-4 items-center bg-mid-gray-1 text-white cursor-pointer" id="closeButton" (click)="closeNav()">
+      <div class="hidden menu h-full px-4 items-center bg-mid-gray-1 text-white cursor-pointer" id="closeButton"
+        (click)="closeNav()">
         <img src="../../assets/icon-close.svg" alt="">
       </div>
       <div class="logo">
@@ -50,20 +52,30 @@
         <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
         <div class="documentName flex flex-col ml-4" *ngIf="selectedDocument">
           <p class="text-mid-gray-2">Document Name</p>
-          <input type="text" [(ngModel)]="selectedDocument.name" class="nameInput text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent" [placeholder]="selectedDocument.name">
+          <input type="text" [(ngModel)]="selectedDocument.name"
+            class="nameInput text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent"
+            [placeholder]="selectedDocument.name">
         </div>
       </div>
       <div class="save&deleteDocument flex items-center" id="save&deleteDocument">
-        <img class="cursor-pointer" src="../../assets/icon-delete.svg" alt="delete-icon">
-        <button 
-        (click)="saveChanges()"
-        class="flex items-center p-2 ml-4 bg-orange text-white rounded"> <img class="mr-2"
-            src="../../assets/icon-save.svg" alt="save-icon" >Save Change</button>
+        <img class="cursor-pointer" src="../../assets/icon-delete.svg" alt="delete-icon" (click)="confirmDelete()">
+        <button (click)="saveChanges()" class="flex items-center p-2 ml-4 bg-orange text-white rounded"> <img
+            class="mr-2" src="../../assets/icon-save.svg" alt="save-icon">Save Change</button>
       </div>
     </div>
 
   </header>
   <div class="w-full truncate" id="contentContainer">
     <app-body-content></app-body-content>
+  </div>
+</div>
+
+<div id="deletePopUp" class="hidden fixed inset-0 items-center justify-center bg-black bg-opacity-40" *ngIf="selectedDocument">
+  <div class="popup-content  bg-white px-4 py-8 rounded shadow-lg text-start">
+    <h1 class="font-semibold text-2xl mb-4">Delete this document?</h1>
+    <p class="mb-4 text-mid-gray-2">Are your sure you want to delete the <br> '{{selectedDocument.name}}' document and its content? <br> This action
+      cannot be reversed</p>
+    <button id="closePopup" class="px-8 py-2 mt-2 w-full bg-orange text-white rounded hover:bg-red-700" (click)="deleteDocument()">Confirm &
+      Delete</button>
   </div>
 </div>
