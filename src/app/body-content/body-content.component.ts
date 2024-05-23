@@ -74,8 +74,8 @@ export class BodyContentComponent {
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
     });
-    this.adjustTextareaHeight();
-    this.adjustVerticalLineHeight();
+    // this.adjustTextareaHeight();
+    // this.adjustVerticalLineHeight();
   }
 
   fetchDocuments() {

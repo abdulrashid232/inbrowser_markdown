@@ -1,24 +1,24 @@
 <div class="flex justify-center w-screen font-Roboto">
-  <div id="textInput" class="text w-full h-screen" >
+  <div id="textInput" class="text w-full h-full" >
     <div class="title bg-light-gray-2 py-1 text-mid-gray-1 text-bold">
       <h1 class="pl-4">MARKDOWN</h1>
     </div>
-    <div *ngIf="selectedDocument" class="h-screen">
-      <textarea class="w-full h-full p-4 border-none resize-none focus:outline-none"  [(ngModel)]='selectedDocument.content' (input)="adjustTextareaHeight()" ></textarea>
+    <div *ngIf="selectedDocument" class="h-full">
+      <textarea class="w-full h-full p-4 border-none resize-none focus:outline-none"  [(ngModel)]='selectedDocument.content' (input)="adjustTextareaHeight()" [value]="adjustTextareaHeight()" ></textarea>
     </div>
     
   </div>
   <div id="vertical-line" class="vertical-line-container">
-    <svg class="vertical-line h-screen" height="100vh" width="1">
+    <svg class="vertical-line" height="100vh" width="1">
       <line x1="0" y1="0" x2="0" y2="100%" style="stroke:#979797;stroke-width:1" />
     </svg>
   </div>
   <div class="w-full max-w-full">
     <div class="flex items-center justify-between title bg-light-gray-2 py-1 text-mid-gray-1 px-4 text-bold">
       <h1 class="pl-4">PREVIEW</h1>
-      <span (click)="showPreview()" class="cursor-pointer">
+      <div (click)="showPreview()" class="cursor-pointer">
         <img src="../../assets/{{ previewShow ? 'icon-hide-preview.svg' : 'icon-show-preview.svg' }}" alt="eye-icon">
-      </span>
+      </div>
     </div>
     <div class="p-6" *ngIf="selectedDocument">
       <markdown class="prose w-full whitespace-normal" [data]="selectedDocument.content"></markdown>
