@@ -4,7 +4,7 @@ import { Component, HostListener } from '@angular/core';
 import { BodyContentComponent } from "../body-content/body-content.component";
 import { DataService } from '../service/data.service';
 import { CommonModule } from '@angular/common';
-import { Document } from '../service/document';
+import { Document } from '../interfaces/document';
 
 @Component({
   selector: 'app-header',
