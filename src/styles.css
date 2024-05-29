@@ -33,6 +33,10 @@ body {
   --titleArea-bg: var(--light-gray-2);
   --popup-bg: var(--white);
   --popup-text: var(--dark-gray);
+  --blockqoute-bg: var(--light-gray-2);
+  --blockqoute-text: var(--black);
+  --code-bg: var(--light-gray-2);
+  --code-text: var(--black);
  
 }
 
@@ -51,6 +55,10 @@ body.dark-theme {
   --popup-bg: var(--dark-gray);
   --popup-text: var(--white);
   --popup-button-bg: var(--orange);
+  --blockqoute-bg: var(--dark-gray);
+  --blockqoute-text: var(--white);
+  --code-bg: var(--dark-gray);
+  --code-text: var(--white);
   
 }
 
@@ -86,8 +94,10 @@ textarea {
 .titleArea{
   background-color: var(--titleArea-bg);
 }
-h1{
-  color: var(--text-color);
+.title{
+  color: var(--mid-gray-2);
+  font-weight: bold;
+  letter-spacing: 5px;
 }
 
 /* Markdown Styles */
@@ -105,7 +115,7 @@ h1{
 }
 
 .markdown-content p {
-  color: var(--text-color);
+  color: var(--light-gray-1);
 }
 
 .markdown-content a {
@@ -115,15 +125,16 @@ h1{
 .markdown-content blockquote {
   border-left: 4px solid var(--button-bg);
   padding-left: 1em;
-  color: var(--text-color);
+  color: var(--blockqoute-text);
+  background-color: var(--blockqoute-bg);
 }
 
 .markdown-content code {
-  background-color: var(--mid-gray-2);
-  color: var(--text-color);
+  background-color: var(--code-bg);
+  color: var(--code-text);
 }
 .markdown-content ul,li{
-  color: var(--text-color);
+  color: var(--light-gray-1);
 }
 /* Pop-up Styles */
 .popup-content {
