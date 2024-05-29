@@ -17,7 +17,7 @@ export class HeaderComponent {
   documents: any[] = []
 
   selectedDocument: any;
-  
+  isDarkTheme: boolean = false;
 
 
   constructor(private dataService: DataService) { }
@@ -33,6 +33,7 @@ export class HeaderComponent {
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
     });
+    this.loadTheme();
   }
 
   selectLatestDocument() {
@@ -164,5 +165,24 @@ export class HeaderComponent {
       this.closePopup();
     }
   }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.applyTheme();
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+  }
+
+  loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      this.isDarkTheme = savedTheme === 'dark';
+      this.applyTheme();
+    }
+  }
+
+  applyTheme() {
+    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+  }
+
 
 }

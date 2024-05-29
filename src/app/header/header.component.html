@@ -24,7 +24,7 @@
       <div class="theme-container">
         <img src="../../assets/icon-dark-mode.svg" alt="moon-image">
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" (change)="toggleTheme()" [checked]="!isDarkTheme">>
           <span class="slider round"></span>
         </label>
         <img src="../../assets/icon-light-mode.svg" alt="sun-image">
@@ -34,11 +34,11 @@
 
   <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
     <div class="flex items-center w-1/4 h-full justify-between p-0 pr-2 m-0">
-      <div class="menu h-full px-4 flex items-center bg-mid-gray-1 text-white cursor-pointer" id="menuButton"
+      <div class="menu h-full px-4 flex items-center bg-mid-gray-2 text-white cursor-pointer" id="menuButton"
         (click)="openNav()">
         <img src="../../assets/icon-menu.svg" alt="">
       </div>
-      <div class="hidden menu h-full px-4 items-center bg-mid-gray-1 text-white cursor-pointer" id="closeButton"
+      <div class="hidden menu h-full px-4 items-center bg-mid-gray-2 text-white cursor-pointer" id="closeButton"
         (click)="closeNav()">
         <img src="../../assets/icon-close.svg" alt="">
       </div>
@@ -54,7 +54,7 @@
         <div class="documentName flex flex-col ml-4" *ngIf="selectedDocument">
           <p class="text-mid-gray-2">Document Name</p>
           <input type="text" [(ngModel)]="selectedDocument.name"
-            class="nameInput text-white text-2xl bg-dark-gray placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent"
+            class="nameInput text-white text-2xl bg-mid-gray-1 placeholder-white border-none rounded-md  focus:outline-none focus:border-transparent"
             [placeholder]="selectedDocument.name">
         </div>
       </div>
@@ -71,7 +71,7 @@
   </div>
 </div>
 
-<div id="deletePopUp" class="hidden fixed inset-0 items-center justify-center bg-black bg-opacity-40" *ngIf="selectedDocument">
+<div id="deletePopUp" class="hidden fixed inset-0 items-center justify-center bg-black bg-opacity-60" *ngIf="selectedDocument">
   <div class="popup-content  bg-white px-4 py-8 rounded shadow-lg text-start">
     <h1 class="font-semibold text-2xl mb-4">Delete this document?</h1>
     <p class="mb-4 text-mid-gray-2">Are your sure you want to delete the <br> '{{selectedDocument.name}}' document and its content? <br> This action

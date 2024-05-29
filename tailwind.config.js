@@ -18,7 +18,8 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif'],
-      Roboto: ['Roboto', 'sans-serif'], 
+      Roboto: ['Roboto', 'sans-serif'],
+      Roboto_slab: ['Roboto Slab','serif' ]
     },
   },
   },
