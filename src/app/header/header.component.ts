@@ -1,6 +1,4 @@
-// Inside header.component.ts
-
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { BodyContentComponent } from "../body-content/body-content.component";
 import { DataService } from '../service/data.service';
 import { CommonModule } from '@angular/common';
@@ -14,26 +12,33 @@ import { Document } from '../interfaces/document';
   imports: [BodyContentComponent, CommonModule]
 })
 export class HeaderComponent {
-  documents: any[] = []
-
-  selectedDocument: any;
+  documents: Document[] = [];
+  selectedDocument: Document | null = null;
   isDarkTheme: boolean = false;
-
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.fetchData().subscribe((note) => {
-      this.documents = note;
-      if (this.documents.length > 0) {
-        this.selectLatestDocument();
-      }
-
-    });
+    this.fetchDocuments();
+    this.loadSelectedDocument();
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
+      this.saveSelectedDocument();
     });
     this.loadTheme();
+  }
+
+  ngOnDestroy() {
+    this.handleUnsavedDocument();
+  }
+
+  fetchDocuments() {
+    this.dataService.fetchData().subscribe((documents) => {
+      this.documents = documents;
+      if (this.documents.length > 0 && !this.selectedDocument) {
+        this.selectLatestDocument();
+      }
+    });
   }
 
   selectLatestDocument() {
@@ -70,7 +75,6 @@ export class HeaderComponent {
     closeButton.classList.remove('hidden');
     closeButton.classList.add('flex');
     save_Delete_Div.classList.add('hidden');
-    // contentContainer.style.marginLeft = "20%"; 
     contentContainer.style.transform = "translateX(250px)";
   }
 
@@ -91,32 +95,27 @@ export class HeaderComponent {
     contentContainer.style.transform = "translateX(0)";
   }
 
-  viewDocument(document: any) {
+  viewDocument(document: Document) {
     this.dataService.setSelectedDocument(document);
     console.log(document);
   }
 
-  
   saveChanges() {
     if (this.selectedDocument) {
-
       const nameInput = document.querySelector('.nameInput') as HTMLInputElement;
       const index = this.documents.findIndex(doc => doc === this.selectedDocument);
       if (index !== -1) {
         this.documents[index].content = this.selectedDocument.content;
-        if( nameInput.value){
+        if (nameInput.value) {
           this.documents[index].name = this.selectedDocument.name = nameInput.value;
         }
         this.dataService.saveData(this.documents);
         console.log(this.documents[index]);
-        
-        
       }
       nameInput.value = '';
+      this.clearSelectedDocument();
     }
-
   }
-
 
   deleteDocument() {
     if (this.selectedDocument) {
@@ -128,37 +127,27 @@ export class HeaderComponent {
         this.selectedDocument = null;
         this.dataService.setSelectedDocument(null);
       }
-
-      this.closePopup()
+      this.closePopup();
     }
   }
 
-
-
-
-  confirmDelete(){
-    console.log("Delete");
-    
+  confirmDelete() {
     const popup = document.getElementById('deletePopUp');
-    console.log(popup);
-    
     if (popup) {
       popup.classList.remove('hidden');
       popup.classList.add('flex');
+    }
   }
-
-  }
-
 
   closePopup() {
     const popup = document.getElementById('deletePopUp');
     if (popup) {
-        popup.classList.remove('flex');
-        popup.classList.add('hidden');
+      popup.classList.remove('flex');
+      popup.classList.add('hidden');
     }
-}
+  }
 
-@HostListener('document:click', ['$event'])
+  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     const popup = document.getElementById('deletePopUp');
     if (event.target === popup) {
@@ -184,5 +173,32 @@ export class HeaderComponent {
     document.body.classList.toggle('dark-theme', this.isDarkTheme);
   }
 
+  saveSelectedDocument() {
+    if (this.selectedDocument) {
+      localStorage.setItem('selectedDocument', JSON.stringify(this.selectedDocument));
+    }
+  }
 
+  loadSelectedDocument() {
+    const savedDocument = localStorage.getItem('selectedDocument');
+    if (savedDocument) {
+      this.selectedDocument = JSON.parse(savedDocument);
+      this.dataService.setSelectedDocument(this.selectedDocument);
+    }
+  }
+
+  clearSelectedDocument() {
+    localStorage.removeItem('selectedDocument');
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  handleBeforeUnload(event: Event) {
+    this.handleUnsavedDocument();
+  }
+
+  handleUnsavedDocument() {
+    if (this.selectedDocument && (!this.selectedDocument.name || !this.selectedDocument.content)) {
+      this.deleteDocument();
+    }
+  }
 }
