@@ -30,11 +30,11 @@
 
   <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
     <div class="flex items-center lg:w-1/4 h-full justify-between p-0 pr-2 m-0">
-      <div class="menu h-full px-4 flex items-center bg-mid-gray-2 text-white cursor-pointer" id="menuButton"
+      <div class="menu w-[56px] md:w-[72px] h-full px-4 flex items-center bg-mid-gray-2 text-white cursor-pointer" id="menuButton"
         (click)="openNav()">
-        <img src="../../assets/icon-menu.svg" alt="">
+        <img class="" src="../../assets/icon-menu.svg" alt="">
       </div>
-      <div class="hidden menu h-full px-4 items-center bg-mid-gray-2 text-white cursor-pointer" id="closeButton"
+      <div class="hidden menu  w-[56px] md:w-[72px] h-full px-4 items-center bg-mid-gray-2 text-white cursor-pointer" id="closeButton"
         (click)="closeNav()">
         <img src="../../assets/icon-close.svg" alt="">
       </div>
@@ -44,20 +44,23 @@
       <div class="lg:border-l-2 lg:border-gray-400 h-8"></div>
     </div>
 
-    <div class=" w-full flex items-center justify-between mx-4">
+    <div class=" w-full flex items-center justify-between md:mx-4">
       <div class="documentName flex items-center">
-        <div class="icon"><img src="../../assets/icon-document.svg"  alt="document icon"></div>
-        <div class="documentName flex flex-col ml-4" *ngIf="selectedDocument">
-          <p class="text-mid-gray-2">Document Name</p>
+        <div class="icon w-[13px]"><img src="../../assets/icon-document.svg"  alt="document icon"></div>
+        <div class="documentName flex flex-col ml-2 md:ml-4" *ngIf="selectedDocument">
+          <p class="hidden md:block text-mid-gray-2">Document Name</p>
           <input type="text" [(ngModel)]="selectedDocument.name"
-            class="nameInput text-white text-2xl bg-mid-gray-1 placeholder-white border-none rounded-md focus:outline-none focus:border-transparent"
+            class="nameInput text-white md:text-2xl bg-mid-gray-1 placeholder-white border-none rounded-md focus:outline-none focus:border-transparent"
             [placeholder]="selectedDocument.name">
         </div>
       </div>
       <div class="save&deleteDocument flex items-center" id="save&deleteDocument">
-        <img class="cursor-pointer" src="../../assets/icon-delete.svg" alt="delete-icon" (click)="confirmDelete()">
-        <button (click)="saveChanges()" class="flex items-center p-2 ml-4 bg-orange text-white rounded">
+        <img class="cursor-pointer " src="../../assets/icon-delete.svg" alt="delete-icon" (click)="confirmDelete()">
+        <button (click)="saveChanges()" class="hidden md:flex items-center p-2 ml-4 bg-orange text-white rounded">
           <img class="mr-2" src="../../assets/icon-save.svg" alt="save-icon">Save Change
+        </button>
+        <button (click)="saveChanges()" class="flex items-center justify-center p-2 mx-2 w-[40px] bg-orange text-white rounded md:hidden">
+          <img  src="../../assets/icon-save.svg" alt="save-icon">
         </button>
       </div>
     </div>
