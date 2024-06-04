@@ -1,23 +1,29 @@
-<div class="flex justify-center w-screen font-Roboto">
+<div class="positio-absolute md:position-relative md:flex justify-center w-screen font-Roboto">
   <div id="textInput" class="text w-full h-full" >
-    <div class="titleArea  bg-light-gray-2 py-1 text-mid-gray-1 text-bold">
-      <h1 class="title pl-4">MARKDOWN</h1>
+    <div class="titleArea flex items-center justify-between title bg-light-gray-2 py-1 text-mid-gray-1 px-4 text-bold">
+      <h1 class="title ">MARKDOWN</h1>
+      <div (click)=" mobileShowPreview()" class="md:hidden cursor-pointer">
+        <img src="../../assets/icon-show-preview.svg" alt="eye-icon">
+      </div>
     </div>
     <div *ngIf="selectedDocument" class="h-full">
       <textarea class="w-full h-full p-4 border-none resize-none focus:outline-none"  [(ngModel)]='selectedDocument.content' (input)="adjustTextareaHeight()" [value]="adjustTextareaHeight()" ></textarea>
     </div>
     
   </div>
-  <div id="vertical-line" class="vertical-line-container">
+  <div id="vertical-line" class="hidden md:block vertical-line-container">
     <svg class="vertical-line" height="100vh" width="1">
       <line x1="0" y1="0" x2="0" y2="100%" style="stroke:#979797;stroke-width:1" />
     </svg>
   </div>
-  <div class="w-full max-w-full">
+  <div id="markDown-Preview" class="hidden md:block w-full max-w-full">
     <div class="titleArea flex items-center justify-between title bg-light-gray-2 py-1 text-mid-gray-1 px-4 text-bold">
-      <h1 class="title pl-4">PREVIEW</h1>
-      <div (click)="showPreview()" class="cursor-pointer">
+      <h1 class="title md:pl-4">PREVIEW</h1>
+      <div (click)="showPreview()" class="hidden md:block cursor-pointer">
         <img src="../../assets/{{ previewShow ? 'icon-hide-preview.svg' : 'icon-show-preview.svg' }}" alt="eye-icon">
+      </div>
+      <div (click)=" mobileShowPreview()" class="md:hidden cursor-pointer">
+        <img src="../../assets/icon-hide-preview.svg" alt="eye-icon">
       </div>
     </div>
     <div class="markdown-content p-6 flex justify-center items-center" *ngIf="selectedDocument">

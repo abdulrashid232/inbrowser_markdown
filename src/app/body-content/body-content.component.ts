@@ -54,6 +54,21 @@ export class BodyContentComponent {
       verticalLine.style.display = 'block';
     }
   }
+  mobileShowPreview(){
+    console.log("clicked");
+    const textInput = document.getElementById('textInput');
+    const markDownPreview = document.getElementById('markDown-Preview');
+    this.previewShow = !this.previewShow;
+    if (this.previewShow) {
+      textInput.style.display = 'none';
+      markDownPreview.classList.add('show');
+    } 
+    else {
+      textInput.style.display = 'block';
+      markDownPreview.classList.remove('show');
+    }
+    
+  }
 
 
   adjustTextareaHeight() {
