@@ -8,12 +8,12 @@
         <h1 class="text-xl font-bold text-mid-gray-1">MY DOCUMENTS</h1>
       </div>
       <div class="flex flex-col flex-grow overflow-y-auto px-4 py-4 mt-4">
-        <button class="px-4 py-2 bg-orange text-white rounded-md" (click)="createNewDocument()">+ New Document</button>
+        <button class="px-4 py-2 bg-orange text-white rounded-md hover:bg-red" (click)="createNewDocument()">+ New Document</button>
         <div class="flex items-center mt-4" *ngFor="let doc of documents.slice().reverse()" (click)="viewDocument(doc)">
           <div class="icon"><img src="../../assets/icon-document.svg" alt="document icon"></div>
           <div class="documentName flex flex-col ml-4">
             <p class="text-mid-gray-2">{{doc.createdAt}}</p>
-            <h4 class="text-white">{{doc.name}}</h4>
+            <h4 class="text-white cursor-pointer hover:text-orange">{{doc.name}}</h4>
           </div>
         </div>
       </div>
@@ -30,11 +30,11 @@
 
   <header class="header flex w-full h-16 bg-dark-gray p-0 truncate" id="header">
     <div class="flex items-center lg:w-1/4 h-full justify-between p-0 pr-2 m-0">
-      <div class="menu w-[56px] md:w-[72px] h-full px-4 flex items-center bg-mid-gray-2 text-white cursor-pointer" id="menuButton"
+      <div class="menu w-[56px] md:w-[72px] h-full  flex items-center justify-center bg-mid-gray-2 text-white cursor-pointer hover:bg-orange" id="menuButton"
         (click)="openNav()">
         <img class="" src="../../assets/icon-menu.svg" alt="">
       </div>
-      <div class="hidden menu  w-[56px] md:w-[72px] h-full px-4 items-center bg-mid-gray-2 text-white cursor-pointer" id="closeButton"
+      <div class="hidden menu  w-[56px] md:w-[72px] h-full  items-center justify-center bg-mid-gray-2 text-white cursor-pointer  hover:bg-orange" id="closeButton"
         (click)="closeNav()">
         <img src="../../assets/icon-close.svg" alt="">
       </div>
@@ -55,11 +55,11 @@
         </div>
       </div>
       <div class="save&deleteDocument flex items-center" id="save&deleteDocument">
-        <img class="cursor-pointer " src="../../assets/icon-delete.svg" alt="delete-icon" (click)="confirmDelete()">
-        <button (click)="saveChanges()" class="hidden md:flex items-center p-2 ml-4 bg-orange text-white rounded">
+        <img class="cursor-pointer hover:bg-orange" src="../../assets/icon-delete.svg" alt="delete-icon" (click)="confirmDelete()">
+        <button (click)="saveChanges()" class="hidden md:flex items-center p-2 ml-4 bg-orange text-white rounded hover:bg-red">
           <img class="mr-2" src="../../assets/icon-save.svg" alt="save-icon">Save Change
         </button>
-        <button (click)="saveChanges()" class="flex items-center justify-center p-2 mx-2 w-[40px] bg-orange text-white rounded md:hidden">
+        <button (click)="saveChanges()" class="flex items-center justify-center p-2 mx-2 w-[40px] bg-orange text-white rounded md:hidden hover:bg-red">
           <img  src="../../assets/icon-save.svg" alt="save-icon">
         </button>
       </div>
@@ -75,6 +75,6 @@
   <div class="popup-content bg-white px-4 py-8 rounded shadow-lg text-start">
     <h1 class="font-semibold text-2xl mb-4">Delete this document?</h1>
     <p class="mb-4 text-mid-gray-2">Are your sure you want to delete the <br> '{{selectedDocument.name}}' document and its content? <br> This action cannot be reversed</p>
-    <button id="closePopup" class="px-8 py-2 mt-2 w-full bg-orange text-white rounded hover:bg-red-700" (click)="deleteDocument()">Confirm & Delete</button>
+    <button id="closePopup" class="px-8 py-2 mt-2 w-full bg-orange text-white rounded hover:bg-red" (click)="deleteDocument()">Confirm & Delete</button>
   </div>
 </div>
