@@ -48,9 +48,9 @@ Users should be able to:
 
 ### Stack
 
-- [Angular](angular.io) -Angular 17
-- [TypeScript]
-- [Tailwind CSS](tailwind.docs) - For styles 
+- [Angular](https://angular.dev/) -Angular 17
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation) - For styles 
 - Ngx-markdown - Angular markdown library
 
 ## Author
