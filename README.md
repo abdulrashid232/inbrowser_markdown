@@ -42,7 +42,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution Link](https://github.com/abdulrashid232/inbrowser_markdown)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://abdel-inbrowser-markdown.vercel.app/)
 
 ## My process
 
@@ -51,9 +51,10 @@ Users should be able to:
 - [Angular](https://angular.dev/) -Angular 17
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/docs/installation) - For styles 
-- Ngx-markdown - Angular markdown library
+- [Ngx-markdown] -(https://www.npmjs.com/package/ngx-markdown#usage) Angular markdown library
+- [Prismjs] -(https://prismjs.com/)
 
 ## Author
 
-- Website - [Abdul-Rashid](https://www.your-site.com)
+- Abdul-Rashid
 
