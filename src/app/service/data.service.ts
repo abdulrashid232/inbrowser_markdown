@@ -12,10 +12,6 @@ export class DataService {
   private apiUrl = '../assets/data.json';
 
   private localStorageKey = 'documents';
-
-  // fetchData(): Observable<any> {
-  //   return this.http.get<any>(this.apiUrl);
-  // }
   
   fetchData(): Observable<any[]> {
     const data = localStorage.getItem(this.localStorageKey);

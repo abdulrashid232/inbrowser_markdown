@@ -23,23 +23,11 @@ export class BodyContentComponent {
   constructor(private elementRef: ElementRef, private dataService: DataService) { }
 
   ngOnInit() {
-    // this.dataService.fetchData().subscribe((note) => {
-    //   this.documents = note;
-    //   console.log(this.documents);
-
-      // this.documents.forEach((doc:any)=>{
-      //   console.log(doc.content);
-      // });
-
-
-    // });
 
     this.fetchDocuments()
     this.dataService.selectedDocument$.subscribe((document) => {
       this.selectedDocument = document;
     });
-    // this.adjustTextareaHeight();
-    // this.adjustVerticalLineHeight();
   }
 
   showPreview() {
