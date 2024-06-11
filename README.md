@@ -51,8 +51,8 @@ Users should be able to:
 - [Angular](https://angular.dev/) -Angular 17
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/docs/installation) - For styles 
-- [Ngx-markdown] -(https://www.npmjs.com/package/ngx-markdown#usage) Angular markdown library
-- [Prismjs] -(https://prismjs.com/)
+- [Ngx-markdown](https://www.npmjs.com/package/ngx-markdown#usage) Angular markdown library
+- [Prismjs](https://prismjs.com/)
 
 ## Author
 
