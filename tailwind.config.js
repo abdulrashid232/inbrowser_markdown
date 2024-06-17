@@ -19,7 +19,22 @@ module.exports = {
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif'],
       Roboto: ['Roboto', 'sans-serif'],
-      Roboto_slab: ['Roboto Slab','serif' ]
+      Roboto_slab: ['Roboto Slab','serif' ],
+      Roboto_mono: ['"Roboto Mono"', 'monospace'],
+    },
+    ontWeight: {
+      'slab-bold': '700',
+      'mono-regular': '400',
+    },
+    letterSpacing: {
+      'wide': '0.1em', 
+      'extralight': '200',
+    },
+          fontSize: {
+      'custom-14': '14px',
+    },
+    lineHeight: {
+      'custom-24': '24px',
     },
   },
   },
