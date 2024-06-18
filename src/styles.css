@@ -140,7 +140,11 @@ textarea {
   color: var(--orange);
 }
 .markdown-content code{
-  color: var(--text-color);
+  color: var(--text-color) !important;
+}
+.markdown-content pre{
+  background-color: var(--blockqoute-bg) !important;
+  /* color: black !important; */
 }
 /* Pop-up Styles */
 .popup-content {
