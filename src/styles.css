@@ -15,10 +15,10 @@
   --mid-gray-1: #35393F;
   --mid-gray-2: #5A6069;
   --light-gray-1: #7C8187;
-  --light-gray-2: #C1C4CB;
+  --light-gray-2: #e4e4e4;
   --white: #ffffff;
   --orange: #ff9800;
-  --black: #111111
+  --black: #000000;
 }
 
 /* Light Theme (default) */
@@ -59,7 +59,7 @@ body.dark-theme {
   --popup-button-bg: var(--orange);
   --blockqoute-bg: var(--dark-gray);
   --blockqoute-text: var(--white);
-  --code-bg: var(--dark-gray);
+  --code-bg: var(--light-gray-2);
   --code-text: var(--white);
   
 }
@@ -115,7 +115,9 @@ textarea {
 .markdown-content h6 {
   color: var(--text-color);
 }
-
+.markdown-content h6{
+  color: var(--orange);
+}
 .markdown-content p {
   color: var(--light-gray-1);
 }
@@ -126,17 +128,19 @@ textarea {
 
 .markdown-content blockquote {
   border-left: 4px solid var(--button-bg);
-  padding-left: 1em;
+  padding: 0.2em;
   color: var(--blockqoute-text);
   background-color: var(--blockqoute-bg);
-}
-
-.markdown-content code {
-  background-color: var(--code-bg);
-  color: var(--code-text);
+  border-radius: 0.2rem;
 }
 .markdown-content ul,li{
   color: var(--light-gray-1);
+}
+.markdown-content ul li::marker{
+  color: var(--orange);
+}
+.markdown-content code{
+  color: var(--text-color);
 }
 /* Pop-up Styles */
 .popup-content {
