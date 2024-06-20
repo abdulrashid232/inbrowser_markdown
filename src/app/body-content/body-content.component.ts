@@ -32,7 +32,7 @@ export class BodyContentComponent {
 
   showPreview() {
     const textInput = document.getElementById('textInput');
-    const verticalLine = document.getElementById('vertical-line');
+    const verticalLine = document.getElementById('line');
     this.previewShow = !this.previewShow;
     if (this.previewShow) {
       textInput.style.display = 'none';
