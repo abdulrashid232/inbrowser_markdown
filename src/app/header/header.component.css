@@ -89,6 +89,3 @@ input:checked + .slider:before {
 .show{
   display: flex;
 }
-/* .hidden{
-  display: none;
-} */
