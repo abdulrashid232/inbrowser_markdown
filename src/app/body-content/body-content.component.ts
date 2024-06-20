@@ -64,21 +64,12 @@ export class BodyContentComponent {
     if (textarea) {
       textarea.style.height = 'auto';
       textarea.style.height = textarea.scrollHeight + 'px';
-      this.adjustVerticalLineHeight();
+      
     }
 
   }
 
-  adjustVerticalLineHeight() {
-    const textarea = this.elementRef.nativeElement.querySelector('textarea');
-    const verticalLine = this.elementRef.nativeElement.querySelector('.vertical-line');
-
-    if (textarea && verticalLine) {
-      const textareaHeight = textarea.scrollHeight;
-      textarea.style.overflow = 'hidden';
-      verticalLine.setAttribute('height', `${textareaHeight}px`);
-    }
-  }
+  
 
 
 

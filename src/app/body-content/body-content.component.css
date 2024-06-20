@@ -1,3 +1,6 @@
 .show{
   display: block;
 }
+.line{
+  border-left: 2px solid #c9ced4;
+}
