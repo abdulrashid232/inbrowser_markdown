@@ -81,6 +81,10 @@ button {
   background-color: var(--button-bg);
   color: var(--text-color);
 }
+.line{
+  background-color: var(--light-gray-1);
+
+}
 
 input,
 textarea {

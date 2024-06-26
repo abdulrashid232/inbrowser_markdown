@@ -1,6 +1,14 @@
 .show{
   display: block;
 }
-.line{
-  border-left: 2px solid #c9ced4;
+
+
+.line {
+  width: 1px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%; 
+  transform: translateX(-50%);
+  z-index: 10; 
 }
